@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.content.Intent;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,5 +57,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         dbHelper.close();
+    }
+
+    public void ingresar(View v) {
+        Intent intento = new Intent(this, Actividad2.class);
+        startActivity(intento);
     }
 }

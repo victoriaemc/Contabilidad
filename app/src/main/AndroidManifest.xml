@@ -13,6 +13,11 @@
         android:theme="@style/Theme.Contabilidad"
         tools:targetApi="31">
         <activity
+            android:name=".Actividad2"
+            android:exported="false"
+            android:label="@string/title_activity_actividad2"
+            android:theme="@style/Theme.Contabilidad" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

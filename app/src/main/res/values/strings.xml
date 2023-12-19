@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Contabilidad</string>
+    <string name="title_activity_actividad2">Actividad2</string>
+    <string name="mas">+</string>
 </resources>
