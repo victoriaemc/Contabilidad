@@ -38,6 +38,8 @@ public class Actividad2 extends AppCompatActivity {
         etAmount=(EditText) findViewById(R.id.etAmount);
         etDate=(EditText) findViewById(R.id.etDate);
 
+        selectDate();
+
 
         btAccept.setOnClickListener(new View.OnClickListener() {
             @Override
