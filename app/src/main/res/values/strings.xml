@@ -7,4 +7,5 @@
     <string name="accept">Accept</string>
     <string name="goback">Go back</string>
     <string name="inputnew">Input</string>
+    <string name="amount">Amount</string>
 </resources>

@@ -8,4 +8,5 @@
     <string name="accept">Aceptar</string>
     <string name="goback">Atrás</string>
     <string name="inputnew">Ingresar</string>
+    <string name="amount">Cantidad</string>
 </resources>
