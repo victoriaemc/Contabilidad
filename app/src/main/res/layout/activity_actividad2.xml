@@ -8,7 +8,7 @@
     tools:context=".Actividad2">
 
     <Button
-        android:id="@+id/btRegresar"
+        android:id="@+id/btGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="regresar"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.865" />
 
     <Button
-        android:id="@+id/btAceptar"
+        android:id="@+id/btAccept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/accept"
@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.18" />
 
     <EditText
-        android:id="@+id/etNombre"
+        android:id="@+id/etDate"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
         app:layout_constraintVertical_bias="0.37" />
 
     <EditText
-        android:id="@+id/etConcepto"
+        android:id="@+id/etConcept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.475" />
 
     <EditText
-        android:id="@+id/etCantidad"
+        android:id="@+id/etAmount"
         android:layout_width="212dp"
         android:layout_height="53dp"
         android:ems="10"

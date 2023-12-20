@@ -9,16 +9,16 @@ import android.widget.Button;
 
 public class Actividad2 extends AppCompatActivity {
 
-    Button btAceptar;
+    Button btAccept;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad2);
 
-        btAceptar=(Button) findViewById(R.id.btAceptar);
+        btAccept=(Button) findViewById(R.id.btAccept);
 
-        btAceptar.setOnClickListener(new View.OnClickListener() {
+        btAccept.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View view) {
                Toast.makeText(getApplicationContext(), "Agregado exitosamente", Toast.LENGTH_SHORT).show();
