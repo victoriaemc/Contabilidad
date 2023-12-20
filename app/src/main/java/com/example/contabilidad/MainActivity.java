@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 1f  // Set layout weight to 1 for equal distribution
         ));
         textView.setText(text);
-        textView.setTextColor(getResources().getColor(R.color.text_default_material_dark_primary));
+        textView.setTextColor(getResources().getColor(R.color.text_default_material_dark_primary, null));
         textView.setGravity(Gravity.CENTER);
 
         return textView;
