@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:text="0,00"
+        android:gravity="center"
         android:textColor="@color/text_default_material_dark_primary"
         android:textSize="80sp"
         android:textStyle="bold"

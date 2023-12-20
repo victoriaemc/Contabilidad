@@ -2,21 +2,28 @@ package com.example.contabilidad;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Button;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class Actividad2 extends AppCompatActivity {
     private ContabilidadDbHelper dbHelper;
     private SQLiteDatabase db;
 
     Button btAccept;
-    EditText etConcept, etAmount, etDate;
-
+    EditText etConcept, etAmount; //etDate;
+    private EditText etDate;
+    final Calendar calendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,31 @@ public class Actividad2 extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void selectDate(){
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                etDate.setText(updateDate());
+            }
+        };
+
+        etDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(Actividad2.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+    }
+
+    private String updateDate(){
+        String myFormat = "yyyy-MM-dd";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
+        return dateFormat.format(calendar.getTime());
     }
 
     private void saveDataToDatabase() {
