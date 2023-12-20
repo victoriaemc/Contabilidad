@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">Contabilidad</string>
-    <string name="title_activity_actividad2">Actividad2</string>
+    <string name="app_name">Accounting</string>
+    <string name="title_activity_actividad2">Activity2</string>
     <string name="mas">+</string>
+    <string name="date">Date</string>
+    <string name="concept">Concept</string>
+    <string name="accept">Accept</string>
+    <string name="goback">Go back</string>
+    <string name="inputnew">Input</string>
 </resources>

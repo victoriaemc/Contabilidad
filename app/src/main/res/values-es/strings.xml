@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Contabilidad</string>
+    <string name="title_activity_actividad2">Activity2</string>
+    <string name="mas">+</string>
+    <string name="date">Fecha</string>
+    <string name="concept">Concepto</string>
+    <string name="accept">Aceptar</string>
+    <string name="goback">Atrás</string>
+    <string name="inputnew">Ingresar</string>
+</resources>

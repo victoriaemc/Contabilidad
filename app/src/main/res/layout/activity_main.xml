@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#043262"
+    android:background="@color/material_indigo_900"
     tools:context=".MainActivity">
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="€"
-        android:textColor="#EAF1F0"
+        android:textColor="@color/text_default_material_dark_primary"
         android:textSize="80sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,6 +30,8 @@
         android:onClick="ingresar"
         android:text="@string/mas"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColorHighlight="@color/material_deep_purple_400"
+        android:textColorLink="@color/material_deep_purple_400"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +47,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:text="0,00"
-        android:textColor="#E9F0EF"
+        android:textColor="@color/text_default_material_dark_primary"
         android:textSize="80sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
