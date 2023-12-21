@@ -11,4 +11,6 @@
     <string name="toast_success">Data added successfully</string>
     <string name="toast_fail">Failed to add data</string>
     <string name="toast_uncomplete">Complete all fields</string>
+    <string name="confirm_delete_title">Confirm Delete</string>
+    <string name="confirm_delete_text">Are you sure you want to delete all entries?</string>
 </resources>

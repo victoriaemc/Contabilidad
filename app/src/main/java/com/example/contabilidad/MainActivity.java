@@ -9,11 +9,17 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.TableRow;
 import android.view.Gravity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,30 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private ScrollView scrollView;
     private TableLayout tableLayout;
 
-/*    private void initContabilidad() {
-        // Adición de valores a la BD
-        ContentValues values = new ContentValues();
+    private FloatingActionButton deleteButton;
 
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_FECHA, "2020-10-01");
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_CONCEPTO, "Compra de comida");
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_CANTIDAD, -10.0);
-        db.insert(ContabilidadContract.ContabilidadEntry.TABLE_NAME, null, values);
-
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_FECHA, "2020-10-02");
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_CONCEPTO, "Sueldo");
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_CANTIDAD, 1000.0);
-        db.insert(ContabilidadContract.ContabilidadEntry.TABLE_NAME, null, values);
-
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_FECHA, "2020-10-03");
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_CONCEPTO, "Cena con amigos");
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_CANTIDAD, -50.0);
-        db.insert(ContabilidadContract.ContabilidadEntry.TABLE_NAME, null, values);
-
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_FECHA, "2020-10-04");
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_CONCEPTO, "Ropa");
-        values.put(ContabilidadContract.ContabilidadEntry.COLUMN_NAME_CANTIDAD, -20.0);
-        db.insert(ContabilidadContract.ContabilidadEntry.TABLE_NAME, null, values);
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +47,31 @@ public class MainActivity extends AppCompatActivity {
         txtCantidad = findViewById(R.id.txtCantidad);
         scrollView = findViewById(R.id.scrollView);
         tableLayout = findViewById(R.id.tableLayout);
+        deleteButton = findViewById(R.id.floatingActionButton);
 
-        //initContabilidad();
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showConfirmationDialog();
+            }
+        });
+
+
+
+
         updateTxtCantidad(); // Update txtCantidad with the sum of "cantidad" columns
         displayEntries(); // Display all entries in the database
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Refresh the displayed entries when the activity resumes
+        displayEntries();
+        // Update the txtCantidad after any potential changes
+        updateTxtCantidad();
+    }
+
 
     private void addDataRow(String date, String concept, String amount) {
         // Create a new TableRow
@@ -107,6 +111,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void displayEntries() {
+
+        // Remove all rows except the header row
+        int childCount = tableLayout.getChildCount();
+        for (int i = 1; i < childCount; i++) {
+            View child = tableLayout.getChildAt(i);
+            if (child instanceof TableRow) {
+                tableLayout.removeView(child);
+            }
+        }
+
         // Query to get all entries ordered by date (most recent to oldest)
         String query = "SELECT * FROM " + ContabilidadContract.ContabilidadEntry.TABLE_NAME +
                 " ORDER BY " + ContabilidadContract.ContabilidadEntry.COLUMN_NAME_FECHA + " DESC";
@@ -158,4 +172,28 @@ public class MainActivity extends AppCompatActivity {
         Intent intento = new Intent(this, Actividad2.class);
         startActivity(intento);
     }
+
+    private void showConfirmationDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.confirm_delete_title)
+                .setMessage(R.string.confirm_delete_text)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User clicked Yes, so delete all entries
+                        deleteAllEntries();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .show();
+    }
+
+    private void deleteAllEntries() {
+        db.delete(ContabilidadContract.ContabilidadEntry.TABLE_NAME, null, null);
+        // Clear the TableLayout to remove all displayed rows
+        tableLayout.removeAllViews();
+        // Update the txtCantidad after deletion
+        updateTxtCantidad();
+    }
+
+
 }

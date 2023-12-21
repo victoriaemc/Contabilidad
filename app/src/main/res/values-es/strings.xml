@@ -12,4 +12,6 @@
     <string name="toast_success">Datos añadidos con éxito</string>
     <string name="toast_fail">Error al añadir los datos</string>
     <string name="toast_uncomplete">Rellena todos los campos</string>
+    <string name="confirm_delete_title">Confirmar borrado</string>
+    <string name="confirm_delete_text">¿Seguro que quieres borrar todas las entradas?</string>
 </resources>
