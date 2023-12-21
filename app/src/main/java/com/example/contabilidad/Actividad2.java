@@ -20,7 +20,7 @@ public class Actividad2 extends AppCompatActivity {
     private ContabilidadDbHelper dbHelper;
     private SQLiteDatabase db;
 
-    Button btAccept;
+    Button btAccept, btGoBack;
     EditText etConcept, etAmount; //etDate;
     private EditText etDate;
     final Calendar calendar = Calendar.getInstance();
@@ -34,6 +34,8 @@ public class Actividad2 extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
 
         btAccept=(Button) findViewById(R.id.btAccept);
+        btGoBack=(Button) findViewById(R.id.btGoBack);
+
         etConcept=(EditText) findViewById(R.id.etConcept);
         etAmount=(EditText) findViewById(R.id.etAmount);
         etDate=(EditText) findViewById(R.id.etDate);
@@ -45,6 +47,13 @@ public class Actividad2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveDataToDatabase();
+            }
+        });
+
+        btGoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                regresar(view);
             }
         });
 
@@ -81,7 +90,7 @@ public class Actividad2 extends AppCompatActivity {
         String dateString = etDate.getText().toString();
 
         if (concept.isEmpty() || amountString.isEmpty() || dateString.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Complete all fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.toast_uncomplete, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -99,13 +108,13 @@ public class Actividad2 extends AppCompatActivity {
         );
 
         if (newRowId != -1) {
-            Toast.makeText(getApplicationContext(), "Data added successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.toast_success, Toast.LENGTH_SHORT).show();
             // Optionally, clear the input fields after successful insertion
             etConcept.setText("");
             etAmount.setText("");
             etDate.setText("");
         } else {
-            Toast.makeText(getApplicationContext(), "Failed to add data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.toast_fail, Toast.LENGTH_SHORT).show();
         }
     }
 

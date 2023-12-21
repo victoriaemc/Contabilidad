@@ -9,4 +9,7 @@
     <string name="goback">Atrás</string>
     <string name="inputnew">Ingresar</string>
     <string name="amount">Cantidad</string>
+    <string name="toast_success">Datos añadidos con éxito</string>
+    <string name="toast_fail">Error al añadir los datos</string>
+    <string name="toast_uncomplete">Rellena todos los campos</string>
 </resources>

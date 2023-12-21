@@ -8,4 +8,7 @@
     <string name="goback">Go back</string>
     <string name="inputnew">Input</string>
     <string name="amount">Amount</string>
+    <string name="toast_success">Data added successfully</string>
+    <string name="toast_fail">Failed to add data</string>
+    <string name="toast_uncomplete">Complete all fields</string>
 </resources>
